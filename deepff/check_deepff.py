@@ -1238,16 +1238,16 @@ def check_environ(environ_dic, proc_num_one_node):
     log_info.log_error('Input error: no cp2k executable file, please set deepff/environ/cp2k_exe')
     exit()
 
-  #if ( 'cp2k_env_file' in environ_dic.keys() ):
-  #  cp2k_env_file = environ_dic['cp2k_env_file']
-  #  if ( os.path.exists(os.path.abspath(cp2k_env_file)) ):
-  #    environ_dic['cp2k_env_file'] = os.path.abspath(cp2k_env_file)
-  #  else:
-  #    log_info.log_error('Input error: cp2k environment file does not exist, please check or set deepff/environ/cp2k_env_file')
-  #    exit()
-  #else:
-  #  log_info.log_error('Input error: no cp2k environment file, please set deepff/environ/cp2k_env_file')
-  #  exit()
+  if ( 'cp2k_env_file' in environ_dic.keys() ):
+    cp2k_env_file = environ_dic['cp2k_env_file']
+    if ( os.path.exists(os.path.abspath(cp2k_env_file)) ):
+      environ_dic['cp2k_env_file'] = os.path.abspath(cp2k_env_file)
+    else:
+      log_info.log_error('Input error: cp2k environment file does not exist, please check or set deepff/environ/cp2k_env_file')
+      exit()
+  else:
+    log_info.log_error('Input error: no cp2k environment file, please set deepff/environ/cp2k_env_file')
+    exit()
 
   if ( 'cuda_dir' in environ_dic.keys() ):
     cuda_dir = environ_dic['cuda_dir']
