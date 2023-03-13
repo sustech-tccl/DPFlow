@@ -93,7 +93,7 @@ def check_deepmd_model(deepmd_dic):
         if ( descr_type in valid_type ):
           pass
         else:
-          log_info.log_error('Input error: %s is not supported for deepff/deepmd_model/model/descriptor/type')
+          log_info.log_error('Input error: %s is not supported for deepff/deepmd_model/model/descriptor/type' %(descr_type))
           exit()
 
       if ( 'sel' in deepmd_dic['model']['descriptor'].keys() ):

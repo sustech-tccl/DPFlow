@@ -22,7 +22,7 @@ def write_restart_inp(inp_file_name, restart_iter, restart_stage, data_num, work
 
   Args:
     inp_file_name: string
-      inp_file_name is the name of cp2k_kit deepff file.
+      inp_file_name is the name of DPFlow deepff file.
     restart_iter: int
       restart_iter is the iteration number of restart.
     restart_stage: int

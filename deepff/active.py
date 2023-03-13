@@ -4,6 +4,7 @@ import os
 import json
 import copy
 import numpy as np
+import operator
 from collections import OrderedDict
 from DPFlow.tools import call
 from DPFlow.tools import data_op
@@ -561,9 +562,9 @@ def kernel(work_dir, inp_file, deepff_type):
   if ( deepff_type == 'active_model_devi' ):
     if ( 'set_data_dir' not in deepmd_dic['training'].keys() ):
       tot_atoms_type = process.get_atoms_type(deepmd_dic)
-      if ( data_op.reorder_atom_list(deepmd_dic['model']['type_map']) != data_op.reorder_atom_list(tot_atoms_type) ):
+      if not operator.eq(deepmd_dic['model']['type_map'], tot_atoms_type) :
         type_map_str = data_op.comb_list_2_str(tot_atoms_type, ' ')
-        log_info.log_error('Input error: missing elements in type_map, please reset deepff/deepmd/model/type_map')
+        log_info.log_error('Input error: type_map error, please use %s for deepff/deepmd/model/type_map and correspondingly change sel' %(type_map_str))
         exit()
     else:
       tot_atoms_type = deepmd_dic['model']['type_map']
